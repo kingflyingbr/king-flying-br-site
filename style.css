@@ -1,40 +1,189 @@
+{
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: sans-serif;
-  background: #f8f9fa;
-  margin: 0;
-  padding: 0;
-}
-header {
-  background: #007bff;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-nav a {
-  color: white;
-  margin: 0 1rem;
-  text-decoration: none;
-}
-main {
-  padding: 2rem;
-}
-form {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-form input, form button {
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #eee;
-}
+    body {
+      font-family: sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    form {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    form input, form button {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eee;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>King Flying</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Destinos</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Solicite uma cotação</h2>
+    <form id="quoteForm">
+      <input type="text" id="name" placeholder="Seu nome" required />
+      <input type="email" id="email" placeholder="Seu e-mail" required />
+      <input type="text" id="destination" placeholder="Destino desejado" required />
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="message" style="text-align: center; margin-top: 1rem;"></p>
+  </main>
+
+  <footer>
+    &copy; 2025 King Flying - Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const form = document.getElementById('quoteForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const destination = document.getElementById('destination').value.trim();
+
+      if (name && email && destination) {
+        message.textContent = `Obrigado, ${name}! Em breve enviaremos informações sobre "${destination}" para ${email}.`;
+        form.reset();
+      } else {
+        message.textContent = "Por favor, preencha todos os campos.";
+      }
+    });
+  </script>
+</body>
+</html>
+✅ O que esse exemplo cobre:
+Layout básico com header, nav, main, footer.
+
+Formulário funcional com validação simples.
+
+Estilo limpo e responsivo.
+
+Mensagem de confirmação com JavaScript.
+
+Se quiser adicionar mais páginas, um slider de destinos, mapas, ou até integração com um serviço de envio de e-mails, posso te ajudar a expandir!
+
+Deseja que eu crie as próximas seções do site, como “Destinos” ou “Sobre nós”?
+
+
+
+
+
+
+
+
+Você disse:
+quero
+
+
+O ChatGPT disse:
+Memória salva atualizada
+Perfeito! Vamos expandir o site da King Flying com as seções:
+
+✈️ Seção “Sobre Nós”
+html
+Copiar
+Editar
+<section id="sobre" style="background: #fff; padding: 2rem; text-align: center;">
+  <h2>Sobre a King Flying</h2>
+  <p style="max-width: 700px; margin: auto;">
+    A <strong>King Flying</strong> é uma agência de viagens apaixonada por criar experiências inesquecíveis. 
+    Com anos de mercado e uma equipe dedicada, oferecemos pacotes personalizados, suporte especializado 
+    e destinos incríveis no Brasil e no mundo.
+  </p>
+</section>
+🌍 Seção “Destinos”
+html
+Copiar
+Editar
+<section id="destinos" style="background: #f0f0f0; padding: 2rem;">
+  <h2 style="text-align: center;">Destinos Populares</h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 1000px; margin: auto;">
+    <div style="background: white; border-radius: 8px; overflow: hidden; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <img src="https://source.unsplash.com/300x200/?paris" alt="Paris" style="width: 100%;">
+      <div style="padding: 1rem;">
+        <h3>Paris</h3>
+        <p>A cidade luz encanta com sua arquitetura, gastronomia e romantismo.</p>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 8px; overflow: hidden; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <img src="https://source.unsplash.com/300x200/?rio" alt="Rio de Janeiro" style="width: 100%;">
+      <div style="padding: 1rem;">
+        <h3>Rio de Janeiro</h3>
+        <p>Sol, praia e alegria! Viva o melhor do Brasil na Cidade Maravilhosa.</p>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 8px; overflow: hidden; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <img src="https://source.unsplash.com/300x200/?tokyo" alt="Tóquio" style="width: 100%;">
+      <div style="padding: 1rem;">
+        <h3>Tóquio</h3>
+        <p>Tradição milenar e modernidade se encontram na capital do Japão.</p>
+      </div>
+    </div>
+  </div>
+</section>
