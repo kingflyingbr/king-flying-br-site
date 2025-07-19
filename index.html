@@ -1,108 +1,716 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>King Flying</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Flying - A melhor forma de você voar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #93c5fd;
+            --light-blue: #eff6ff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: var(--primary-blue);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quote-section {
+            background-color: var(--light-blue);
+        }
+        
+        .destination-card {
+            transition: all 0.3s ease;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quote-form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer {
+            background-color: var(--primary-blue);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-
-  <!-- Header -->
-  <header class="bg-blue-600 text-white p-4 text-center">
-    <h1 class="text-2xl font-bold">King Flying</h1>
-    <nav class="mt-2">
-      <a href="#" class="mx-2 hover:underline">Início</a>
-      <a href="#destinos" class="mx-2 hover:underline">Destinos</a>
-      <a href="#sobre" class="mx-2 hover:underline">Sobre</a>
-      <a href="#quoteForm" class="mx-2 hover:underline">Contato</a>
-    </nav><nav class="mt-2">
-  <a href="#" class="mx-2 hover:underline">Início</a>
-  <a href="#destinos" class="mx-2 hover:underline">Destinos</a>
-  <a href="#sobre" class="mx-2 hover:underline">Sobre</a>
-  <a href="#quoteForm" class="mx-2 hover:underline">Contato</a>
-</nav>
-  </header>
-
-  <!-- Seção Destinos -->
-  <section id="destinos" class="py-12 bg-gray-50">
-    <h2 class="text-3xl font-semibold text-center mb-8">Destinos Populares</h2>
-    <div class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto px-4">
-      
-      <!-- Card 1 -->
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-80">
-        <img src="https://source.unsplash.com/400x250/?paris" alt="Paris" class="w-full h-48 object-cover" />
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">Paris</h3>
-          <p class="text-gray-600">A cidade luz encanta com sua arquitetura, gastronomia e romantismo.</p>
+<body class="bg-gray-50">
+    <!-- Navbar Fixo -->
+    <nav class="navbar fixed w-full z-50 text-white py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fd92954c-476a-472e-820b-e03aebda3085.png" alt="Logo King Flying - Coroa e avião em tons de azul" class="h-12 mr-4">
+                <span class="text-2xl font-bold">King Flying</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-blue-200 font-medium">Home</a>
+                <a href="#destinations" class="hover:text-blue-200 font-medium">Destinos</a>
+                <a href="#packages" class="hover:text-blue-200 font-medium">Pacotes</a>
+                <a href="#quotes" class="hover:text-blue-200 font-medium">Cotações</a>
+                <a href="#testimonials" class="hover:text-blue-200 font-medium">Depoimentos</a>
+                <a href="#contact" class="hover:text-blue-200 font-medium">Contato</a>
+                <a href="#about" class="hover:text-blue-200 font-medium">Sobre</a>
+            </div>
+            
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
-      </div>
+    </nav>
 
-      <!-- Card 2 -->
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-80">
-        <img src="https://source.unsplash.com/400x250/?rio" alt="Rio de Janeiro" class="w-full h-48 object-cover" />
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">Rio de Janeiro</h3>
-          <p class="text-gray-600">Sol, praia e alegria! Viva o melhor do Brasil na Cidade Maravilhosa.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero pt-24 pb-16 text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">King Flying</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">A melhor forma de você voar</h2>
+                <p class="text-lg mb-8">Descubra os melhores destinos com pacotes exclusivos e atendimento personalizado. Sua jornada começa aqui.</p>
+                <a href="#quotes" class="bg-white text-blue-800 px-6 py-3 rounded-full font-bold hover:bg-blue-100 transition duration-300 inline-block">Solicitar Cotação</a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b8b39649-80c4-465b-ae8a-835016d51b65.png" alt="Casal feliz em viagem pela King Flying com paisagem de aeroporto ao fundo" class="rounded-lg shadow-xl">
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Card 3 -->
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-80">
-        <img src="https://source.unsplash.com/400x250/?tokyo" alt="Tóquio" class="w-full h-48 object-cover" />
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">Tóquio</h3>
-          <p class="text-gray-600">Tradição milenar e modernidade se encontram na capital do Japão.</p>
+    <!-- Destaques -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <i class="fas fa-globe-americas text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">+100 Destinos</h3>
+                    <p class="text-gray-600">Os melhores lugares do mundo para você conhecer</p>
+                </div>
+                <div class="text-center p-6">
+                    <i class="fas fa-medal text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Melhor Preço</h3>
+                    <p class="text-gray-600">Garantia do menor preço ou devolvemos a diferença</p>
+                </div>
+                <div class="text-center p-6">
+                    <i class="fas fa-headset text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Atendimento 24h</h3>
+                    <p class="text-gray-600">Nossa equipe está sempre pronta para te ajudar</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Seção Sobre Nós -->
-  <section id="sobre" class="bg-white py-12 text-center px-4">
-    <h2 class="text-3xl font-semibold mb-4">Sobre a King Flying</h2>
-    <p class="max-w-3xl mx-auto text-gray-700 text-lg">
-      A <strong>King Flying</strong> é uma agência de viagens apaixonada por criar experiências inesquecíveis.
-      Com anos de mercado e uma equipe dedicada, oferecemos pacotes personalizados, suporte especializado
-      e destinos incríveis no Brasil e no mundo.
-    </p>
-  </section>
+    <!-- Seção de Destinos -->
+    <section id="destinations" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Explore Nossos Destinos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f63f4f34-d8f6-4e0e-9a59-313dd34167d2.png" alt="Paris à noite com a Torre Eiffel iluminada" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Paris, França</h3>
+                        <p class="text-gray-600 mb-4">A cidade do amor e da luz</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A partir de R$ 4.299</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">Ver Pacotes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f01f0cd-9d7f-4584-81c9-79083dd1f8e9.png" alt="Praias paradisíacas de Cancún com águas cristalinas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Cancún, México</h3>
+                        <p class="text-gray-600 mb-4">Sol, mar e diversão</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A partir de R$ 3.599</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">Ver Pacotes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1590e02-ab73-4d7f-bfb3-a93f4e8793e0.png" alt="Orlando com parques temáticos e atrações familiares" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Orlando, EUA</h3>
+                        <p class="text-gray-600 mb-4">Diversão para toda família</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A partir de R$ 5.199</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">Ver Pacotes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c7c6b550-627e-4b75-ac33-ecde217a8d32.png" alt="Fernando de Noronha com praias intocadas e natureza preservada" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fernando de Noronha</h3>
+                        <p class="text-gray-600 mb-4">Paraíso ecológico brasileiro</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A partir de R$ 2.899</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">Ver Pacotes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300">Ver Todos os Destinos</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Formulário -->
-  <main class="py-12 px-4">
-    <h2 class="text-2xl font-semibold text-center mb-6">Solicite uma cotação</h2>
-    <form id="quoteForm" class="bg-white p-6 rounded-xl max-w-md mx-auto flex flex-col gap-4 shadow-md">
-      <input type="text" id="name" placeholder="Seu nome" required class="border border-gray-300 rounded p-2" />
-      <input type="email" id="email" placeholder="Seu e-mail" required class="border border-gray-300 rounded p-2" />
-      <input type="text" id="destination" placeholder="Destino desejado" required class="border border-gray-300 rounded p-2" />
-      <button type="submit" class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Enviar</button>
-    </form>
-    <p id="message" class="text-center mt-4 text-green-600 font-semibold"></p>
-  </main>
+    <!-- Seção de Cotações -->
+    <section id="quotes" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Solicite uma Cotação</h2>
+            
+            <div class="max-w-4xl mx-auto bg-blue-50 p-8 rounded-xl">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Nome Completo</label>
+                        <input type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">E-mail</label>
+                        <input type="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Telefone</label>
+                        <input type="tel" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Destino</label>
+                        <select class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>Selecione um destino</option>
+                            <option>Paris, França</option>
+                            <option>Roma, Itália</option>
+                            <option>Nova York, EUA</option>
+                            <option>Buenos Aires, Argentina</option>
+                            <option>Lisboa, Portugal</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Data de Ida</label>
+                        <input type="date" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Data de Volta</label>
+                        <input type="date" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 mb-2">Observações</label>
+                        <textarea rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300">Solicitar Cotação</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Cotação em tempo real exemplo -->
+            <div class="max-w-4xl mx-auto mt-16 bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4 text-blue-800">Últimas Cotações</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-blue-100">
+                            <tr>
+                                <th class="px-4 py-2">Destino</th>
+                                <th class="px-4 py-2">Partida</th>
+                                <th class="px-4 py-2">Preço</th>
+                                <th class="px-4 py-2">Vagas</th>
+                                <th class="px-4 py-2">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200 hover:bg-blue-50">
+                                <td class="px-4 py-3">Nova York, EUA</td>
+                                <td class="px-4 py-3">15/10/2023</td>
+                                <td class="px-4 py-3 font-bold text-blue-600">R$ 4.299</td>
+                                <td class="px-4 py-3">12</td>
+                                <td class="px-4 py-3"><button class="text-blue-600 hover:underline">Reservar</button></td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-blue-50">
+                                <td class="px-4 py-3">Roma, Itália</td>
+                                <td class="px-4 py-3">20/09/2023</td>
+                                <td class="px-4 py-3 font-bold text-blue-600">R$ 3.899</td>
+                                <td class="px-4 py-3">5</td>
+                                <td class="px-4 py-3"><button class="text-blue-600 hover:underline">Reservar</button></td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-blue-50">
+                                <td class="px-4 py-3">Buenos Aires, AR</td>
+                                <td class="px-4 py-3">05/11/2023</td>
+                                <td class="px-4 py-3 font-bold text-blue-600">R$ 2.599</td>
+                                <td class="px-4 py-3">8</td>
+                                <td class="px-4 py-3"><button class="text-blue-600 hover:underline">Reservar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-4 bg-gray-200 text-sm">
-    &copy; 2025 King Flying - Todos os direitos reservados.
-  </footer>
+    <!-- Pacotes Promocionais -->
+    <section id="packages" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Pacotes em Destaque</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pacote 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f337475-34dc-428b-a361-0c108a57e0cd.png" alt="Pacote Europa 2023 - Torre Eiffel e Coliseu" class="w-full h-48 object-cover">
+                        <span class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">PROMO</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Europa Premium 2023</h3>
+                        <div class="flex justify-between text-sm text-gray-500 mb-3">
+                            <span><i class="fas fa-calendar mr-1"></i> 10 dias / 9 noites</span>
+                            <span><i class="fas fa-users mr-1"></i> Aéreo + Hotel</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Paris, Roma e Barcelona com guia brasileiro</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-xs line-through text-gray-400">R$ 6.799</span>
+                                <span class="text-xl font-bold text-blue-600 ml-2">R$ 5.999</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pacote 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5b49625e-8028-4b20-81a9-d292fd13342d.png" alt="Lua de Mel nas Maldivas - Bangalô sobre o mar" class="w-full h-48 object-cover">
+                        <span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">TOP</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Lua de Maldivas</h3>
+                        <div class="flex justify-between text-sm text-gray-500 mb-3">
+                            <span><i class="fas fa-calendar mr-1"></i> 7 dias / 6 noites</span>
+                            <span><i class="fas fa-users mr-1"></i> Aéreo + All Inclusive</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Bangalô sobre o mar com jantar romântico</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-xl font-bold text-blue-600">R$ 9.299</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pacote 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ccb0c903-b3ea-495f-8491-e5d0e1588cde.png" alt="Disney em Família - Orlando com crianças" class="w-full h-48 object-cover">
+                        <span class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">FAMÍLIA</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Disney em Família</h3>
+                        <div class="flex justify-between text-sm text-gray-500 mb-3">
+                            <span><i class="fas fa-calendar mr-1"></i> 8 dias / 7 noites</span>
+                            <span><i class="fas fa-users mr-1"></i> Aéreo + Parque</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">4 adultos + 2 crianças, guia exclusivo</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-xs line-through text-gray-400">R$ 16.499</span>
+                                <span class="text-xl font-bold text-blue-600 ml-2">R$ 14.799</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300">Ver Todos os Pacotes</a>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    const form = document.getElementById('quoteForm');
-    const message = document.getElementById('message');
+    <!-- Depoimentos -->
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">O que nossos clientes dizem</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/10212a69-86e5-409e-a310-ecfc6e1e0783.png" alt="Cliente Marcelo Souza sorrindo" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Marcelo Souza</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"A viagem para Paris foi perfeita! A equipe da King Flying cuidou de tudo e superou nossas expectativas. Recomendo muito!"</p>
+                    <p class="text-sm text-gray-500">Viagem em Janeiro/2023</p>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/79789b40-3e09-41fd-bc7c-792c57a281ff.png" alt="Cliente Ana Costa em Nova York" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ana Costa</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"Nunca tinha viajado para fora e fiquei insegura, mas a King Flying me deixou tranquila desde o início. Atendimento excepcional!"</p>
+                    <p class="text-sm text-gray-500">Viagem em Março/2023</p>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6a3c5718-a20e-452c-ab8b-b5d459940fbe.png" alt="Cliente Carlos Henrique na Praia" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Carlos Henrique</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"O pacote para Fernando de Noronha foi perfeito para nossa lua de mel. Tudo saiu exatamente como combinado. Recomendo!"</p>
+                    <p class="text-sm text-gray-500">Viagem em Agosto/2023</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-full font-bold border-2 border-blue-600 hover:bg-blue-50 transition duration-300">Deixe seu Depoimento</a>
+            </div>
+        </div>
+    </section>
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const destination = document.getElementById('destination').value.trim();
+    <!-- Seção Informativa -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e0861fd1-041e-4bc3-96ef-257cb08cfd32.png" alt="Agência King Flying interior moderno com atendentes vestidos em azul" class="rounded-xl shadow-lg">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-900">Sobre a King Flying</h2>
+                    <p class="text-lg text-gray-700 mb-6">Somos uma agência de viagens especializada em criar experiências únicas e memoráveis para nossos clientes. Com mais de 15 anos de mercado, já levamos milhares de pessoas para conhecer o mundo.</p>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Segurança</h4>
+                                <p class="text-gray-600">Todas as nossas operações são certificadas pela ABTA e IATA</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Experiência</h4>
+                                <p class="text-gray-600">Mais de 15 anos criando viagens inesquecíveis</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Atendimento</h4>
+                                <p class="text-gray-600">Equipe especializada disponível 24h para emergências</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      if (name && email && destination) {
-        message.textContent = `Obrigado, ${name}! Em breve enviaremos informações sobre "${destination}" para ${email}.`;
-        form.reset();
-      } else {
-        message.textContent = "Por favor, preencha todos os campos.";
-      }
-    });
-  </script>
+    <!-- Contato -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Fale Conosco</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-blue-800">Informações de Contato</h3>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Endereço</h4>
+                                <p class="text-gray-600">Av. Paulista, 1000 - Sala 123<br>São Paulo - SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Telefone</h4>
+                                <p class="text-gray-600"><a href="tel:+551140028922">(11) 4002-8922</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">E-mail</h4>
+                                <p class="text-gray-600">contato@kingflying.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-blue-800">Horário de Atendimento</h3>
+                    <p class="text-gray-600 mb-2">Segunda à Sexta: 9h às 18h</p>
+                    <p class="text-gray-600">Sábado: 9h às 13h</p>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold mb-4 text-blue-800">Redes Sociais</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-blue-800">Envie uma Mensagem</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Nome</label>
+                            <input type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Assunto</label>
+                            <select class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Selecione um assunto</option>
+                                <option>Dúvidas</option>
+                                <option>Reclamações</option>
+                                <option>Elogios</option>
+                                <option>Sugestões</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Mensagem</label>
+                            <textarea rows="5" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Newsletter -->
+    <section class="py-12 bg-blue-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Receba Nossas Ofertas</h2>
+            <p class="text-lg mb-6 max-w-2xl mx-auto">Cadastre-se e receba as melhores promoções e destinos exclusivos diretamente no seu e-mail.</p>
+            
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Seu melhor e-mail" class="flex-1 px-4 py-3 rounded-l-lg focus:outline-none text-gray-800">
+                <button type="submit" class="bg-blue-800 px-6 py-3 rounded-r-lg font-bold hover:bg-blue-900 transition duration-300">Cadastrar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Receba Ofertas Exclusivas</h2>
+            <p class="text-lg mb-6">Cadastre-se e ganhe 5% de desconto na primeira viagem!</p>
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Seu e-mail" class="flex-1 px-4 py-3 rounded-l-lg focus:outline-none">
+                <button type="submit" class="bg-yellow-400 text-blue-800 px-6 py-3 rounded-r-lg font-bold hover:bg-yellow-500 transition">Cadastrar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c1273a5d-8c9c-4dda-a63f-29cd1cfd6660.png" alt="Logo King Flying" class="h-20 mb-4">
+                    <p class="mb-4">A melhor forma de você voar</p>
+                    <p class="text-blue-200">© <script>document.write(new Date().getFullYear())</script> King Flying. Todos os direitos reservados.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-200">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Destinos</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Pacotes</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Contato</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Sobre</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-200">Passagens Aéreas</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Hospedagem</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Pacotes Turísticos</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Seguro Viagem</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Vistos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Suporte</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-200">Central de Ajuda</a></li>
+                        <li><a href="#" class="hover:text-blue-200">FAQ</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-blue-200">Cancelamentos</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-700 mt-12 pt-8 text-center text-blue-200">
+                <p>Formas de pagamento aceitas:</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <i class="fab fa-cc-visa text-2xl"></i>
+                    <i class="fab fa-cc-mastercard text-2xl"></i>
+                    <i class="fab fa-cc-amex text-2xl"></i>
+                    <i class="fab fa-cc-paypal text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante WhatsApp -->
+    <a href="https://wa.me/5511YOURNUMBER" class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-xl hover:bg-green-600 transition-all duration-300 hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // JavaScript para funcionalidades adicionais
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll para links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Simulação de cotações atualizadas
+            function updateQuotes() {
+                const quotesTable = document.querySelector('.overflow-x-auto tbody');
+                if (quotesTable) {
+                    const rows = quotesTable.querySelectorAll('tr');
+                    rows.forEach(row => {
+                        const priceCell = row.querySelector('td:nth-child(3)');
+                        const price = priceCell.textContent.replace(/\D/g, '');
+                        const newPrice = Math.floor(price * 0.95);
+                        priceCell.textContent = `R$ ${newPrice.toLocaleString('pt-BR')}`;
+                    });
+                }
+            }
+            
+            setInterval(updateQuotes, 30000);
+            
+            // Menu mobile
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    const menu = this.nextElementSibling;
+                    if (menu.classList.contains('hidden')) {
+                        menu.classList.remove('hidden');
+                        menu.classList.add('block');
+                    } else {
+                        menu.classList.add('hidden');
+                        menu.classList.remove('block');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
