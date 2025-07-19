@@ -1,43 +1,103 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Viaje com a King Flying. Pacotes exclusivos, destinos incríveis e atendimento personalizado.">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>King Flying</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>King Flying</h1>
-    <nav>
-      <a href="#formulario">Solicitar Cotação</a>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 text-center">
+    <h1 class="text-2xl font-bold">King Flying</h1>
+    <nav class="mt-2">
+      <a href="#" class="mx-2 hover:underline">Início</a>
+      <a href="#destinos" class="mx-2 hover:underline">Destinos</a>
+      <a href="#sobre" class="mx-2 hover:underline">Sobre</a>
+      <a href="#quoteForm" class="mx-2 hover:underline">Contato</a>
     </nav>
   </header>
-  <main>
-    <section>
-      <h2>Bem-vindo à King Flying</h2>
-      <p>Sua agência de viagens personalizada.</p>
-    </section>
-    <section id="formulario">
-      <h3>Solicite sua Cotação</h3>
-      <form action="https://formsubmit.co/seuemail@exemplo.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://seunome.github.io/king-flying-site/obrigado.html">
-        <label>Nome: <input type="text" name="nome" required></label>
-        <label>Email: <input type="email" name="email" required></label>
-        <label>Destino: <input type="text" name="destino" required></label>
-        <label>Data Ida: <input type="date" name="data_ida" required></label>
-        <label>Data Volta: <input type="date" name="data_volta" required></label>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
+
+  <!-- Seção Destinos -->
+  <section id="destinos" class="py-12 bg-gray-50">
+    <h2 class="text-3xl font-semibold text-center mb-8">Destinos Populares</h2>
+    <div class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto px-4">
+      
+      <!-- Card 1 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-80">
+        <img src="https://source.unsplash.com/400x250/?paris" alt="Paris" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Paris</h3>
+          <p class="text-gray-600">A cidade luz encanta com sua arquitetura, gastronomia e romantismo.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-80">
+        <img src="https://source.unsplash.com/400x250/?rio" alt="Rio de Janeiro" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Rio de Janeiro</h3>
+          <p class="text-gray-600">Sol, praia e alegria! Viva o melhor do Brasil na Cidade Maravilhosa.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-80">
+        <img src="https://source.unsplash.com/400x250/?tokyo" alt="Tóquio" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Tóquio</h3>
+          <p class="text-gray-600">Tradição milenar e modernidade se encontram na capital do Japão.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Sobre Nós -->
+  <section id="sobre" class="bg-white py-12 text-center px-4">
+    <h2 class="text-3xl font-semibold mb-4">Sobre a King Flying</h2>
+    <p class="max-w-3xl mx-auto text-gray-700 text-lg">
+      A <strong>King Flying</strong> é uma agência de viagens apaixonada por criar experiências inesquecíveis.
+      Com anos de mercado e uma equipe dedicada, oferecemos pacotes personalizados, suporte especializado
+      e destinos incríveis no Brasil e no mundo.
+    </p>
+  </section>
+
+  <!-- Formulário -->
+  <main class="py-12 px-4">
+    <h2 class="text-2xl font-semibold text-center mb-6">Solicite uma cotação</h2>
+    <form id="quoteForm" class="bg-white p-6 rounded-xl max-w-md mx-auto flex flex-col gap-4 shadow-md">
+      <input type="text" id="name" placeholder="Seu nome" required class="border border-gray-300 rounded p-2" />
+      <input type="email" id="email" placeholder="Seu e-mail" required class="border border-gray-300 rounded p-2" />
+      <input type="text" id="destination" placeholder="Destino desejado" required class="border border-gray-300 rounded p-2" />
+      <button type="submit" class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Enviar</button>
+    </form>
+    <p id="message" class="text-center mt-4 text-green-600 font-semibold"></p>
   </main>
-  <footer>
-    <p>&copy; 2025 King Flying. Todos os direitos reservados.</p>
+
+  <!-- Footer -->
+  <footer class="text-center py-4 bg-gray-200 text-sm">
+    &copy; 2025 King Flying - Todos os direitos reservados.
   </footer>
-  <script src="script.js"></script>
+
+  <script>
+    const form = document.getElementById('quoteForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const destination = document.getElementById('destination').value.trim();
+
+      if (name && email && destination) {
+        message.textContent = `Obrigado, ${name}! Em breve enviaremos informações sobre "${destination}" para ${email}.`;
+        form.reset();
+      } else {
+        message.textContent = "Por favor, preencha todos os campos.";
+      }
+    });
+  </script>
+
 </body>
 </html>
