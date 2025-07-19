@@ -187,3 +187,8 @@ Editar
     </div>
   </div>
 </section>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
